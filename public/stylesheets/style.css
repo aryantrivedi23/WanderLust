@@ -1,0 +1,168 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 120vh;
+}
+
+.container {
+  padding: 1rem;
+  flex: 1;
+}
+
+.plus-jakarta-sans-regular {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222 !important;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.f-info-socials i {
+  font-size: 1.5rem;
+}
+
+.f-info {
+  text-align: center;
+  height: 8rem;
+  display: flex;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.listing-card {
+  width: 100% !important;
+  border: none !important;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.listing-link {
+  text-decoration: none;
+  width: 100%;
+}
+
+.card-img-overlay {
+  opacity: 0;
+  transition: all 150ms ease-in-out;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.1;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.form-container {
+  margin: 0 auto;
+}
+
+.show-container {
+  display: flex;
+  margin: 0 auto;
+  width: 40%;
+  flex-direction: column;
+}
+
+.show-container img {
+  border-radius: 2rem;
+  height: 60vh;
+  width: 100%;
+  object-fit: cover;
+  margin: 2% auto;
+}
+
+.show-btns {
+  display: flex;
+  gap: 2%;
+  margin: 5% 0;
+}
+
+.show-btns form button {
+  background-color: #fe424d;
+}
+
+.show-btns form button:hover {
+  background-color: #fe5560 !important;
+}
+
+.show-btns-2 .delete {
+  background-color: #fe424d !important;
+}
+
+.show-btns-2 .delete:hover {
+  background-color: #fe5560 !important;
+}
+
+@media (max-width: 768px) {
+  .show-container {
+    width: 100%;
+  }
+  .show-container img {
+    width: 60%;
+  }
+}
+
+@media (max-width: 426px) {
+  .show-container {
+    width: 100%;
+  }
+  .show-container img {
+    width: 100%;
+  }
+}
