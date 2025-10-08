@@ -7,6 +7,7 @@ const ExpressError = require("./utils/ExpressError.js");
 const path = require("path");
 const app = express();
 const port = 8080;
+const cookieParser = require("cookie-parser");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
+app.use(cookieParser(process.env.secretcode));
 
 mongoose.connect(process.env.mongoDBlink);
 
@@ -32,7 +34,7 @@ const tokenCheck = (req, res, next) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("hi, I am root");
+  res.redirect("/listings");
 });
 
 app.get("/api", tokenCheck, (req, res) => {
