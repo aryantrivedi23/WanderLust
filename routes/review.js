@@ -5,6 +5,7 @@ const { reviewSchema } = require("../schema/schema.js");
 const Listing = require("../models/listings.js");
 const asyncWrap = require("../utils/asyncWrap.js");
 const ExpressError = require("../utils/ExpressError.js");
+const { isLoggedIn } = require("../middleware.js");
 
 const validateReview = (req, res, next) => {
   let { error } = reviewSchema.validate(req.body);
@@ -19,6 +20,7 @@ const validateReview = (req, res, next) => {
 
 router.post(
   "/",
+  isLoggedIn,
   validateReview,
   asyncWrap(async (req, res) => {
     const id = req.params.id;
@@ -38,6 +40,7 @@ router.post(
 
 router.delete(
   "/:reviewId",
+  isLoggedIn,
   asyncWrap(async (req, res) => {
     const { id, reviewId } = req.params;
     await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
