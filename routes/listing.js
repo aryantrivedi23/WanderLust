@@ -1,27 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listings.js");
-const { listingSchema } = require("../schema/schema.js");
-const ExpressError = require("../utils/ExpressError.js");
 const asyncWrap = require("../utils/asyncWrap.js");
-const { isLoggedIn } = require("../middleware.js");
-
-const validateListing = (req, res, next) => {
-  let { error } = listingSchema.validate(req.body);
-  if (error) {
-    console.log("error caught by middleware");
-    console.log(error);
-    throw new ExpressError(400, error.message);
-  } else {
-    next();
-  }
-};
+const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
 router.get(
   "/",
   asyncWrap(async (req, res) => {
     const allListings = await Listing.find({});
-    console.log(req.user);
     res.status(200).render("listings/index.ejs", { allListings });
   })
 );
@@ -48,6 +34,7 @@ router.get(
 router.get(
   "/:id/edit",
   isLoggedIn,
+  isOwner,
   asyncWrap(async (req, res) => {
     let { id } = req.params;
     let result = await Listing.findById(id);
@@ -73,6 +60,7 @@ router.post(
 router.patch(
   "/:id",
   isLoggedIn,
+  isOwner,
   asyncWrap(async (req, res) => {
     let listing = req.body.listing;
     let { id } = req.params;
@@ -86,6 +74,7 @@ router.patch(
 router.delete(
   "/:id",
   isLoggedIn,
+  isOwner,
   asyncWrap(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);

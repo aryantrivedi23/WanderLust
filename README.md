@@ -8,4 +8,4 @@ This is a personal project I have created to learn more about MERN stack and web
 
 ## Bugs
 
-- Upon opening console, 'Page not found!' error loggs.
+- No current known bugs.

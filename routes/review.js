@@ -1,22 +1,9 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const Review = require("../models/review.js");
-const { reviewSchema } = require("../schema/schema.js");
 const Listing = require("../models/listings.js");
 const asyncWrap = require("../utils/asyncWrap.js");
-const ExpressError = require("../utils/ExpressError.js");
-const { isLoggedIn } = require("../middleware.js");
-
-const validateReview = (req, res, next) => {
-  let { error } = reviewSchema.validate(req.body);
-  if (error) {
-    console.log("error caught by middleware");
-    console.log(error);
-    throw new ExpressError(400, error.message);
-  } else {
-    next();
-  }
-};
+const { isLoggedIn, validateReview } = require("../middleware.js");
 
 router.post(
   "/",

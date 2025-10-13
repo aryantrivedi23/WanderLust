@@ -8,12 +8,14 @@
   <p>&#8377; <%= result.price.toLocaleString("en-IN") %></p>
   <p><%= result.location %></p>
   <p><%= result.country %></p>
+  <% if (currentUser && currentUser._id.equals(result.owner._id)) { %>
   <div class="show-btns">
     <form method="post" action="/listings/<%= result._id %>?_method=DELETE">
       <button class="btn">Delete</button>
     </form>
     <a href="/listings/<%= result._id %>/edit" class="btn btn-dark">Edit</a>
   </div>
+  <% } %>
   <hr />
   <div>
     <h3>Leave a Review</h3>
