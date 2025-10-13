@@ -16,8 +16,9 @@
     <a href="/listings/<%= result._id %>/edit" class="btn btn-dark">Edit</a>
   </div>
   <% } %>
-  <hr />
   <div>
+    <% if (currentUser) { %>
+    <hr />
     <h3>Leave a Review</h3>
     <form
       action="/listings/<%= result._id %>/reviews"
@@ -52,16 +53,22 @@
       </div>
       <button type="submit" class="btn btn-outline-dark">Submit</button>
     </form>
-    <% if (result.reviews.length != 0) { %>
     <hr />
+    <% } else { %>
+    <hr />
+    <h5>Please log in to post a review.</h5>
+    <hr />
+    <% } %> <% if (result.reviews.length != 0) { %>
+
     <h3>Reviews</h3>
     <div class="row">
       <% for (review of result.reviews) { %>
       <div class="card col-5 m-2">
         <div class="card-body p-3">
-          <h5 class="card-title mb-3">Spammer</h5>
+          <h5 class="card-title mb-3">@<%= review.author.username %></h5>
           <p class="card-text mb-3"><%= review.comment %></p>
           <p class="card-text mb-3">⭐ <%= review.rating %></p>
+          <% if (currentUser && review.author.equals(currentUser._id)) {%>
           <form
             method="POST"
             action="/listings/<%= result._id %>/reviews/<%= review._id %>?_method=DELETE"
@@ -71,6 +78,7 @@
               Delete
             </button>
           </form>
+          <% } %>
         </div>
       </div>
       <% } %> <% } %>

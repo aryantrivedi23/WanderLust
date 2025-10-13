@@ -21,7 +21,10 @@ router.get(
   asyncWrap(async (req, res) => {
     let { id } = req.params;
     let result = await Listing.findById(id)
-      .populate("reviews")
+      .populate({
+        path: "reviews",
+        populate: { path: "author" },
+      })
       .populate("owner");
     if (!result) {
       req.flash("error", "This listing doesn't exists.");

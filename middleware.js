@@ -1,4 +1,5 @@
 const Listing = require("./models/listings");
+const Review = require("./models/review.js");
 const { listingSchema } = require("./schema/schema.js");
 const { reviewSchema } = require("./schema/schema.js");
 const ExpressError = require("./utils/ExpressError");
@@ -54,4 +55,17 @@ module.exports.validateReview = (req, res, next) => {
   } else {
     next();
   }
+};
+
+module.exports.isReviewAuthor = async (req, res, next) => {
+  const { id, reviewId } = req.params;
+  const review = await Review.findById(reviewId);
+  if (
+    res.locals.currentUser &&
+    res.locals.currentUser._id.equals(review.author)
+  ) {
+    return next();
+  }
+  req.flash("error", "Unauthorized Action!");
+  res.redirect(`/listings/${id}`);
 };
