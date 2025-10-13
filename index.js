@@ -12,6 +12,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js");
+const { saveRedirect } = require("./middleware.js");
 
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
@@ -90,7 +91,9 @@ app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
 app.all("/{*splat}", (req, res, next) => {
-  next(new ExpressError(404, "Page not found!"));
+  next(
+    new ExpressError(404, `Page not found! tried to access ${req.originalUrl}`)
+  );
 });
 
 app.use((err, req, res, next) => {

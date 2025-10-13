@@ -3,6 +3,7 @@
 <div class="show-container">
   <h3><%= result.title %></h3>
   <img src="<%= result.image %>" alt="image" />
+  <p>Owned by <i><%= result.owner.username %></i></p>
   <p><%= result.description %></p>
   <p>&#8377; <%= result.price.toLocaleString("en-IN") %></p>
   <p><%= result.location %></p>

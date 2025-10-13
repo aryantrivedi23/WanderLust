@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const data = require("./data.js");
+const { data, users } = require("./data.js");
 const Listing = require("../models/listings.js");
 const Review = require("../models/review.js");
 const User = require("../models/user.js");
@@ -11,6 +11,7 @@ const main = async () => {
   await Review.deleteMany({});
   await User.deleteMany({});
   await Listing.insertMany(data);
+  await User.insertMany(users);
   console.log("database initilized");
 };
 

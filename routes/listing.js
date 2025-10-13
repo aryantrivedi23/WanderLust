@@ -21,6 +21,7 @@ router.get(
   "/",
   asyncWrap(async (req, res) => {
     const allListings = await Listing.find({});
+    console.log(req.user);
     res.status(200).render("listings/index.ejs", { allListings });
   })
 );
@@ -33,7 +34,9 @@ router.get(
   "/:id",
   asyncWrap(async (req, res) => {
     let { id } = req.params;
-    let result = await Listing.findById(id).populate("reviews");
+    let result = await Listing.findById(id)
+      .populate("reviews")
+      .populate("owner");
     if (!result) {
       req.flash("error", "This listing doesn't exists.");
       return res.redirect("/listings");
@@ -59,6 +62,7 @@ router.post(
   asyncWrap(async (req, res) => {
     const listing = req.body;
     const newListing = await Listing(listing);
+    newListing.owner = req.user._id;
     newListing.save();
     req.flash("success", "Listing added!");
     console.log("listing added");
