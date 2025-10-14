@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-require("dotenv").config();
 const ExpressError = require("./utils/ExpressError.js");
 const path = require("path");
 const app = express();
@@ -12,6 +11,10 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js");
+
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
 
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");

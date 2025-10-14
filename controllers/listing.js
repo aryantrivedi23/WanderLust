@@ -31,9 +31,13 @@ module.exports.editForm = async (req, res) => {
 };
 
 module.exports.postListing = async (req, res) => {
+  const url = req.file.path;
+  const filename = req.file.filename;
+
   const listing = req.body;
   const newListing = await Listing(listing);
   newListing.owner = req.user._id;
+  newListing.image = { url, filename };
   newListing.save();
   req.flash("success", "Listing added!");
   console.log("listing added");
@@ -41,8 +45,15 @@ module.exports.postListing = async (req, res) => {
 };
 
 module.exports.editListing = async (req, res) => {
-  let listing = req.body.listing;
-  let { id } = req.params;
+  const { id } = req.params;
+  const listing = req.body.listing;
+
+  if (typeof req.file !== "undefined") {
+    const url = req.file.path;
+    const filename = req.file.filename;
+    listing.image = { url, filename };
+  }
+
   await Listing.findByIdAndUpdate(id, listing);
   console.log("patched");
   req.flash("success", "Listing updated!");

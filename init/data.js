@@ -353,7 +353,6 @@ const sampleData = [
 
 const data = sampleData.map((item) => ({
   ...item,
-  image: item.image.url,
   owner: "68ea2ba9067dc28693401a7a",
 }));
 

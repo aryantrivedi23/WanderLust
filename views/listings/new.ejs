@@ -1,36 +1,95 @@
 <% layout('/layouts/boilerplate.ejs') %>
 
 <div class="row-md">
-    <div class="col-md-7 form-container">
-        <h3 style="margin-bottom: 2%;">Details</h3>
-        <form method="post" action="/listings">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input id="title" class="form-control" type="text" name="title">
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea id="description" class="form-control" name="description" rows="5"></textarea>
-            </div>
-            <div class="mb-3">
+  <div class="col-md-7 form-container">
+    <h3 style="margin-bottom: 2%">Details</h3>
+    <form
+      method="post"
+      action="/listings"
+      enctype="multipart/form-data"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          id="title"
+          class="form-control"
+          type="text"
+          name="title"
+          required
+        />
+        <div class="invalid-feedback">Title is required!</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          class="form-control"
+          name="description"
+          rows="5"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Description is required!</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <!-- <div class="mb-3">
                 <label for="form-image" class="form-label">Image</label>
                 <input id="form-image" class="form-control" type="text" name="image">
-            </div>
-            <div class="row">
-                <div class="mb-3 col-md-4">
-                    <label for="price" class="form-label">Price</label>
-                    <input id="price" class="form-control" type="text" name="price">
-                </div>
-                <div class="mb-3 col-md-8">
-                    <label for="country" class="form-label">Country</label>
-                    <input id="country" class="form-control" type="text" name="country">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <input id="location" class="form-control" type="text" name="location">
-            </div>
-            <button class="btn btn-dark">Add</button>
-        </form>
-    </div>
+            </div> -->
+      <div class="mb-3">
+        <label for="form-image" class="form-label">Upload Image</label>
+        <input
+          id="form-image"
+          class="form-control"
+          type="file"
+          accept="image/*"
+          name="image"
+          required
+        />
+        <div class="invalid-feedback">Image is required!</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            id="price"
+            class="form-control"
+            type="text"
+            name="price"
+            required
+          />
+          <div class="invalid-feedback">Price is required!</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <input
+            id="country"
+            class="form-control"
+            type="text"
+            name="country"
+            required
+          />
+          <div class="invalid-feedback">Country is required!</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          id="location"
+          class="form-control"
+          type="text"
+          name="location"
+          required
+        />
+        <div class="invalid-feedback">Location is required!</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <button class="btn btn-dark">Add</button>
+    </form>
+  </div>
 </div>

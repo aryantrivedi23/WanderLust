@@ -2,7 +2,7 @@
 
 <div class="show-container">
   <h3><%= result.title %></h3>
-  <img src="<%= result.image %>" alt="image" />
+  <img src="<%= result.image.url %>" alt="image" />
   <p>Owned by <i><%= result.owner.username %></i></p>
   <p><%= result.description %></p>
   <p>&#8377; <%= result.price.toLocaleString("en-IN") %></p>
@@ -26,18 +26,32 @@
       novalidate
       class="needs-validation"
     >
-      <div class="mb-3 mt-3">
-        <label for="rating" class="form-label">Rating</label>
-        <input
-          type="range"
-          class="form-range"
-          name="rating"
-          id="rating"
-          min="1"
-          max="5"
-        />
+      <div class="mt-3">
+        <label class="form-label">Rating</label>
+        <fieldset class="starability-heartbeat">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="rating"
+            value="1"
+            checked
+            aria-label="No rating."
+          />
+          <input type="radio" id="first-rate1" name="rating" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="rating" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="rating" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="rating" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="rating" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
       </div>
-      <div class="mb-3 mt-3">
+
+      <div class="mb-3">
         <label for="comment" class="form-label">Comment</label>
         <textarea
           name="comment"
@@ -66,8 +80,11 @@
       <div class="card col-5 m-2">
         <div class="card-body p-3">
           <h5 class="card-title mb-3">@<%= review.author.username %></h5>
+          <p
+            class="starability-result card-text static-rating"
+            data-rating="<%= review.rating %>"
+          ></p>
           <p class="card-text mb-3"><%= review.comment %></p>
-          <p class="card-text mb-3">⭐ <%= review.rating %></p>
           <% if (currentUser && review.author.equals(currentUser._id)) {%>
           <form
             method="POST"
