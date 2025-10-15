@@ -29,6 +29,16 @@ body {
   background-color: white;
 }
 
+.navbar-div {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-div a {
+  margin: 0 0.5rem;
+  text-align: center;
+}
+
 textarea {
   resize: none !important;
 }
@@ -159,6 +169,49 @@ textarea {
   display: flex;
   margin: auto;
   justify-content: center;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.filter {
+  display: flex;
+  width: 5rem;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.7;
+  gap: 0.25rem;
+  transition: all 100ms ease-in-out 10ms;
+}
+
+.filter p {
+  text-align: center;
+}
+
+.filter:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.taxSwitch:hover {
+  cursor: pointer;
+}
+
+.taxSwitchLabel {
+  user-select: none;
+}
+
+.taxSwitchLabel:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

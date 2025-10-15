@@ -1,5 +1,55 @@
 <% layout('/layouts/boilerplate.ejs') %>
 
+<div class="head">
+  <div class="filters">
+    <div class="filter">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-bed"></i>
+      <p>Rooms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain-city"></i>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain-sun"></i>
+      <p>Mountains</p>
+    </div>
+    <div class="filter">
+      <i class="fa-brands fa-fort-awesome"></i>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-person-swimming"></i>
+      <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-tree"></i>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-wheat-awn"></i>
+      <p>Farms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-snowflake"></i>
+      <p>Arctic</p>
+    </div>
+  </div>
+  <div class="form-check form-switch form-check-reverse taxDiv">
+    <label class="form-check-label taxSwitchLabel" for="switchCheckReverse"
+      >Display total after taxes</label
+    ><input
+      class="form-check-input taxSwitch"
+      type="checkbox"
+      id="switchCheckReverse"
+    />
+  </div>
+</div>
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 card-container">
   <% for (listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -14,7 +64,10 @@
         <p class="card-title plus-jakarta-sans-bold m-0">
           <%= listing.title %>
         </p>
-        <p class="card-title plus-jakarta-sans-regular m-0">
+        <p
+          class="card-title plus-jakarta-sans-regular m-0 price"
+          data-price="<%= listing.price %>"
+        >
           &#8377; <%= listing.price.toLocaleString("en-IN") %> night
         </p>
       </div>
@@ -22,3 +75,5 @@
   </a>
   <% } %>
 </div>
+
+<script src="/js/indexListings.js"></script>
