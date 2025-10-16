@@ -1,0 +1,31 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<h5 class="p-3">Search results for <i><%= query %></i></h5>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 card-container">
+  <% for (listing of listings) { %>
+  <a href="/listings/<%= listing._id %>" class="listing-link">
+    <div
+      class="card listing-card"
+      data-categories="<%= listing.category.join(',') %>"
+    >
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="Listing Image"
+      />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-title plus-jakarta-sans-bold m-0">
+          <%= listing.title %>
+        </p>
+        <p
+          class="card-title plus-jakarta-sans-regular m-0 price"
+          data-price="<%= listing.price %>"
+        >
+          &#8377; <%= listing.price.toLocaleString("en-IN") %> night
+        </p>
+      </div>
+    </div>
+  </a>
+  <% } %>
+</div>

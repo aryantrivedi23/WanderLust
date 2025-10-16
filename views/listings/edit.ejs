@@ -9,6 +9,7 @@
       class="needs-validation"
       novalidate
       enctype="multipart/form-data"
+      autocomplete="off"
     >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -86,6 +87,66 @@
           required
         />
         <div class="invalid-feedback">Location is required!</div>
+      </div>
+      <div class="mb-4 mt-3">
+        <label class="form-label mb-3">Categories</label>
+        <div class="categories">
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="city" id="city"
+            class="form-check-input" <%= result.category.includes('city') ?
+            'checked' : '' %> />
+            <label for="city" class="form-check-label">City</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="rooms" id="room"
+            class="form-check-input" <%= result.category.includes('rooms') ?
+            'checked' : '' %> />
+            <label for="room" class="form-check-label">Rooms</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="mountains"
+            id="mountains" class="form-check-input" <%=
+            result.category.includes('mountains') ? 'checked' : '' %> />
+            <label for="mountains" class="form-check-label">Mountains</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="castles" id="castles"
+            class="form-check-input" <%= result.category.includes('castles') ?
+            'checked' : '' %> />
+            <label for="castles" class="form-check-label">Castles</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="pools" id="pools"
+            class="form-check-input" <%= result.category.includes('pools') ?
+            'checked' : '' %> />
+            <label for="pools" class="form-check-label">Pool</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="camping" id="camping"
+            class="form-check-input" <%= result.category.includes('camping') ?
+            'checked' : '' %> />
+            <label for="camping" class="form-check-label">Camping</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="farms" id="farms"
+            class="form-check-input" <%= result.category.includes('farms') ?
+            'checked' : '' %> />
+            <label for="farms" class="form-check-label">Farm</label>
+          </div>
+
+          <div class="category form-check">
+            <input type="checkbox" name="category" value="arctic" id="arctic"
+            class="form-check-input" <%= result.category.includes('arctic') ?
+            'checked' : '' %> />
+            <label for="arctic" class="form-check-label">Arctic</label>
+          </div>
+        </div>
       </div>
       <button class="btn btn-dark">Edit</button>
     </form>

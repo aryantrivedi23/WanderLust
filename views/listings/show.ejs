@@ -2,11 +2,15 @@
 
 <div class="show-container">
   <h3><%= result.title %></h3>
-  <img src="<%= result.image.url %>" alt="image" />
-  <p>Owned by <i><%= result.owner.username %></i></p>
-  <p><%= result.description %></p>
-  <p>&#8377; <%= result.price.toLocaleString("en-IN") %></p>
-  <p><%= result.location %></p>
+  <img src="<%= result.image.url %>" class="show-img" alt="image" />
+  <p class="owner-text">Owned by <i><%= result.owner.username %></i></p>
+  <hr />
+  <h5>Description</h5>
+  <p class="description"><%= result.description %></p>
+  <h5>Price</h5>
+  <p>&#8377;<%= result.price.toLocaleString("en-IN") %> night</p>
+  <h5>Location</h5>
+  <p class="mb-1"><%= result.location %></p>
   <p><%= result.country %></p>
   <% if (currentUser && currentUser._id.equals(result.owner._id)) { %>
   <div class="show-btns">
@@ -25,6 +29,7 @@
       method="post"
       novalidate
       class="needs-validation"
+      autocomplete="off"
     >
       <div class="mt-3">
         <label class="form-label">Rating</label>
@@ -67,8 +72,9 @@
       </div>
       <button type="submit" class="btn btn-outline-dark">Submit</button>
     </form>
+    <% if (result.reviews.length > 0) { %>
     <hr />
-    <% } else { %>
+    <% } %> <% } else { %>
     <hr />
     <h5>Please log in to post a review.</h5>
     <hr />

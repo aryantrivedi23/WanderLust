@@ -6,11 +6,13 @@ const ExpressError = require("./utils/ExpressError.js");
 const path = require("path");
 const app = express();
 const port = 8080;
+const asyncWrap = require("./utils/asyncWrap.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js");
+const { search } = require("./controllers/search.js");
 
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
@@ -50,21 +52,8 @@ passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect(process.env.mongoDBlink);
 
-const tokenCheck = (req, res, next) => {
-  const { token } = req.query;
-
-  if (token == "giveaccess") {
-    return next();
-  }
-  next(new ExpressError(401, "Access Denied!"));
-};
-
 app.get("/", (req, res) => {
   res.redirect("/listings");
-});
-
-app.get("/api", tokenCheck, (req, res) => {
-  res.send("Private Data!");
 });
 
 app.use(flash());
@@ -76,15 +65,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/demouser", async (req, res) => {
-  let fakeUser = new User({
-    email: "student@gmail.com",
-    username: "aryanbro",
-  });
-
-  let registerdUser = await User.register(fakeUser, "pa$$w0rd");
-  res.send(registerdUser);
-});
+app.get("/search", asyncWrap(search));
 
 app.use("/listings", listingsRouter);
 

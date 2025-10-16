@@ -25,7 +25,6 @@ body {
 }
 
 .navbar {
-  height: 5rem;
   background-color: white;
 }
 
@@ -86,7 +85,7 @@ textarea {
 }
 
 .listing-card {
-  width: 100% !important;
+  width: 100%;
   border: none !important;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -131,10 +130,15 @@ textarea {
 
 .show-container img {
   border-radius: 2rem;
-  height: 60vh;
-  width: 100%;
+  height: 50vh;
+  width: 70%;
   object-fit: cover;
-  margin: 2% auto;
+  margin: 1rem auto;
+}
+
+.show-container h3,
+.show-container .owner-text {
+  text-align: center;
 }
 
 .show-btns {
@@ -233,12 +237,90 @@ textarea {
   user-select: none;
 }
 
-@media (max-width: 768px) {
+.search-heading {
+  padding-left: 1rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
   .show-container {
-    width: 100%;
+    width: 60%;
   }
   .show-container img {
-    width: 60%;
+    height: 30vh;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .explore-text {
+    display: none !important;
+  }
+  .search-form {
+    margin: 1rem 0;
+  }
+  .navbar-div {
+    align-items: flex-start;
+    margin-bottom: 1rem !important;
+    gap: 0.5rem;
+  }
+  .taxDiv {
+    display: none !important;
+  }
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+  .filter {
+    width: 3rem;
+  }
+  .listing-card {
+    display: flex;
+    flex-direction: row !important;
+    padding: 0.5rem;
+  }
+  .listing-card img {
+    height: 9rem;
+    width: 9rem !important;
+    object-fit: cover;
+  }
+  .card-img-overlay {
+    height: 9rem;
+    width: 9rem !important;
+  }
+  .listing-card .card-body {
+    margin-top: 0.5rem !important;
+    margin-left: 1.5rem;
+  }
+  .listing-card .card-body .price {
+    font-size: 0.85rem;
+    margin-top: 0.5rem !important;
+  }
+  .head {
+    padding: 0.5rem;
+  }
+  .show-container {
+    width: 100%;
+    padding: 1rem;
+  }
+  /* .show-img {
+    height: 40rem !important;
+    object-fit: cover;
+    margin: 0 auto;
+    margin-bottom: 1rem !important; 
+  } */
+  .show-container h3 {
+    margin: 1rem 0;
+  }
+  .container {
+    padding: 0.5rem !important;
+    overflow: hidden;
   }
 }
 
@@ -248,5 +330,26 @@ textarea {
   }
   .show-container img {
     width: 100%;
+  }
+  .listing-card img {
+    height: 8rem;
+    width: 8rem !important;
+    object-fit: cover;
+  }
+  .card-img-overlay {
+    height: 8rem;
+    width: 8rem !important;
+  }
+  .listing-card .card-body {
+    font-size: 0.75rem;
+  }
+  .listing-card .card-body .price {
+    font-size: 0.75rem;
+  }
+  .show-container h3 {
+    margin: 0.5rem 0 !important;
+  }
+  .filter p {
+    font-size: 0.75rem;
   }
 }
