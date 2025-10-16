@@ -1,9 +1,32 @@
 const taxSwitch = document.querySelector(".taxSwitch");
 const prices = document.querySelectorAll(".price");
 
-function redirect(url) {
-  window.location.href = url;
-}
+const filters = document.querySelectorAll(".filter");
+const cards = document.querySelectorAll(".listing-card");
+
+const selectTab = (filter) => {
+  filters.forEach((f) => f.classList.remove("active-tab"));
+
+  filter.classList.add("active-tab");
+
+  const selectedTab = filter.dataset.tab;
+
+  cards.forEach((card) => {
+    const categories = card.dataset.categories.split(",");
+    if (selectedTab === "trending" || categories.includes(selectedTab)) {
+      card.parentElement.style.display = "block";
+    } else {
+      card.parentElement.style.display = "none";
+    }
+  });
+};
+
+filters.forEach((filter) => {
+  filter.addEventListener("click", () => selectTab(filter));
+});
+
+const trendingFilter = document.querySelector('.filter[data-tab="trending"]');
+if (trendingFilter) selectTab(trendingFilter);
 
 const clacPrice = () => {
   const includeTax = taxSwitch.checked;
@@ -29,5 +52,4 @@ const clacPrice = () => {
 };
 
 taxSwitch.addEventListener("change", clacPrice);
-
 clacPrice();

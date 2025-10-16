@@ -2,68 +2,39 @@
 
 <div class="head">
   <div class="filters">
-    <% const currentTab = tab || 'trending'; %>
-
-    <div
-      class="filter <%= currentTab === 'trending' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=trending')"
-    >
+    <div class="filter" data-tab="trending">
       <i class="fa-solid fa-fire"></i>
       <p>Trending</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'rooms' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=rooms')"
-    >
+    <div class="filter" data-tab="rooms">
       <i class="fa-solid fa-bed"></i>
       <p>Rooms</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'city' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=city')"
-    >
+    <div class="filter" data-tab="city">
       <i class="fa-solid fa-mountain-city"></i>
       <p>Iconic Cities</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'mountains' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=mountains')"
-    >
+    <div class="filter" data-tab="mountains">
       <i class="fa-solid fa-mountain-sun"></i>
       <p>Mountains</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'castles' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=castles')"
-    >
+    <div class="filter" data-tab="castles">
       <i class="fa-brands fa-fort-awesome"></i>
       <p>Castles</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'pools' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=pools')"
-    >
+    <div class="filter" data-tab="pools">
       <i class="fa-solid fa-person-swimming"></i>
       <p>Amazing Pools</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'camping' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=camping')"
-    >
+    <div class="filter" data-tab="camping">
       <i class="fa-solid fa-tree"></i>
       <p>Camping</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'farms' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=farms')"
-    >
+    <div class="filter" data-tab="farms">
       <i class="fa-solid fa-wheat-awn"></i>
       <p>Farms</p>
     </div>
-    <div
-      class="filter <%= currentTab === 'arctic' ? 'active-tab' : '' %>"
-      onclick="redirect('/listings?tab=arctic')"
-    >
+    <div class="filter" data-tab="arctic">
       <i class="fa-solid fa-snowflake"></i>
       <p>Arctic</p>
     </div>
@@ -83,7 +54,11 @@
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 card-container">
   <% for (listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
-    <div class="card listing-card" style="width: 18rem">
+    <div
+      class="card listing-card"
+      style="width: 18rem"
+      data-categories="<%= listing.category.join(',') %>"
+    >
       <img
         src="<%= listing.image.url %>"
         class="card-img-top"
