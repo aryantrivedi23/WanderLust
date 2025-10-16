@@ -1,6 +1,10 @@
 const taxSwitch = document.querySelector(".taxSwitch");
 const prices = document.querySelectorAll(".price");
 
+function redirect(url) {
+  window.location.href = url;
+}
+
 const clacPrice = () => {
   const includeTax = taxSwitch.checked;
 

@@ -2,39 +2,68 @@
 
 <div class="head">
   <div class="filters">
-    <div class="filter">
+    <% const currentTab = tab || 'trending'; %>
+
+    <div
+      class="filter <%= currentTab === 'trending' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=trending')"
+    >
       <i class="fa-solid fa-fire"></i>
       <p>Trending</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'rooms' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=rooms')"
+    >
       <i class="fa-solid fa-bed"></i>
       <p>Rooms</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'city' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=city')"
+    >
       <i class="fa-solid fa-mountain-city"></i>
       <p>Iconic Cities</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'mountains' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=mountains')"
+    >
       <i class="fa-solid fa-mountain-sun"></i>
       <p>Mountains</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'castles' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=castles')"
+    >
       <i class="fa-brands fa-fort-awesome"></i>
       <p>Castles</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'pools' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=pools')"
+    >
       <i class="fa-solid fa-person-swimming"></i>
       <p>Amazing Pools</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'camping' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=camping')"
+    >
       <i class="fa-solid fa-tree"></i>
       <p>Camping</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'farms' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=farms')"
+    >
       <i class="fa-solid fa-wheat-awn"></i>
       <p>Farms</p>
     </div>
-    <div class="filter">
+    <div
+      class="filter <%= currentTab === 'arctic' ? 'active-tab' : '' %>"
+      onclick="redirect('/listings?tab=arctic')"
+    >
       <i class="fa-solid fa-snowflake"></i>
       <p>Arctic</p>
     </div>
@@ -42,7 +71,8 @@
   <div class="form-check form-switch form-check-reverse taxDiv">
     <label class="form-check-label taxSwitchLabel" for="switchCheckReverse"
       >Display total after taxes</label
-    ><input
+    >
+    <input
       class="form-check-input taxSwitch"
       type="checkbox"
       id="switchCheckReverse"

@@ -1,8 +1,16 @@
 const Listing = require("../models/listings");
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.status(200).render("listings/index.ejs", { allListings });
+  const { tab } = req.query;
+  let allListings;
+
+  if (tab && tab !== "trending") {
+    allListings = await Listing.find({ category: tab });
+  } else {
+    allListings = await Listing.find({});
+  }
+
+  res.status(200).render("listings/index.ejs", { allListings, tab });
 };
 
 module.exports.createListingForm = (req, res) => {
