@@ -1,5 +1,16 @@
 const mongoose = require("mongoose");
 
+const categories = [
+  "rooms",
+  "city",
+  "mountains",
+  "castles",
+  "pools",
+  "camping",
+  "farms",
+  "arctic",
+];
+
 const sampleData = [
   {
     title: "Cozy Beachfront Cottage",
@@ -351,9 +362,16 @@ const sampleData = [
   },
 ];
 
+const getRandomCategories = () => {
+  const num = Math.floor(Math.random() * 5) + 1;
+  const shuffled = categories.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, num);
+};
+
 const data = sampleData.map((item) => ({
   ...item,
   owner: "68ea2ba9067dc28693401a7a",
+  category: getRandomCategories(),
 }));
 
 const users = [

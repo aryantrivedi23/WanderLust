@@ -1,0 +1,27 @@
+.search-btn {
+  background-color: #fe424d;
+  color: white;
+  border-radius: 3rem;
+  padding: 0 1rem;
+  border: none;
+}
+
+.search-btn:hover {
+  background-color: #fb3441;
+  color: white;
+}
+
+.search-btn:active {
+  background-color: #fe1423 !important;
+  color: white;
+}
+
+.search-btn i {
+  display: inline !important;
+  margin-right: 0.5rem !important;
+}
+.search-ipt {
+  border-radius: 3rem;
+  padding: 0.5rem 3rem 0.5rem 3rem;
+  font-size: 1rem;
+}
