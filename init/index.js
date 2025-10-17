@@ -4,7 +4,12 @@ const Listing = require("../models/listings.js");
 const Review = require("../models/review.js");
 const User = require("../models/user.js");
 
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
 mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+// mongoose.connect(process.env.mongoDBlink);
 
 const main = async () => {
   await Listing.deleteMany({});

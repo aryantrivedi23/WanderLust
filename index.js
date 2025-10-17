@@ -8,6 +8,7 @@ const app = express();
 const port = 8080;
 const asyncWrap = require("./utils/asyncWrap.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
@@ -22,6 +23,18 @@ const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+const store = MongoStore.create({
+  mongoUrl: process.env.mongoDBlink,
+  crypto: {
+    secret: process.env.secretcode,
+  },
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+  console.log("ERROR in MONGO SESSION STORE", err);
+});
+
 const sessionOptions = {
   secret: process.env.secretcode,
   resave: false,
@@ -31,6 +44,7 @@ const sessionOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
+  store,
 };
 
 app.set("view engine", "ejs");
