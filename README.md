@@ -1,6 +1,6 @@
 # 🏝️ WanderLust
 
-> <em>A hotel discovery web app where travelers can explore stays, read reviews, and owners can list their properties. Built with a clean and fully responsive UI.</em>
+> <em>A travel-focused web app to find great hotels, read reviews, and let owners list their properties. Built with a clean and fully responsive UI.</em>
 
 ## 🚀 Features
 
