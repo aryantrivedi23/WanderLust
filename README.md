@@ -31,3 +31,6 @@ Some key libraries and packages:
 - express-session  
 - passport  
 - *(and many others…)*
+
+## 📝 Notes
+- Environment variables must be configured before running the project.
