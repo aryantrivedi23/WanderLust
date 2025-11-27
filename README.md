@@ -34,3 +34,7 @@ Some key libraries and packages:
 
 ## 📝 Notes
 - Environment variables must be configured before running the project.
+
+## 📄 License
+
+This project is licensed under the MIT License.
