@@ -26,3 +26,15 @@
   padding: 0.5rem 3rem 0.5rem 3rem;
   font-size: 1rem;
 }
+
+@media (max-width: 435px) {
+  .search-ipt {
+    padding: 0.5rem 1rem 0.5rem 2rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .search-ipt {
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+  }
+}

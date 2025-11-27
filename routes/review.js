@@ -6,7 +6,7 @@ const {
   isLoggedIn,
   validateReview,
   isReviewAuthor,
-} = require("../middleware.js");
+} = require("../middlewares/middleware.js");
 
 router.post(
   "/",

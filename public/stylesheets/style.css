@@ -99,6 +99,7 @@ textarea {
 }
 
 .card-body {
+  margin-top: 0.45rem !important;
   padding: 0 !important;
 }
 
@@ -339,6 +340,17 @@ textarea {
 
 .review-btn {
   padding: 0.45rem 1rem !important;
+}
+
+.listing-card .card-body .listing-title {
+  font-weight: 550;
+  font-size: 1.1rem;
+}
+
+.listing-card .card-body .price {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6a6a6a;
 }
 
 @media (max-width: 1024px) {
